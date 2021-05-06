@@ -19,7 +19,7 @@ export interface Feature {
   elements: Scenario[];
 }
 
-export type StepStatus = 'passed' | 'failed' | 'pending' | 'skipped';
+export type StepStatus = 'passed' | 'failed' | 'undefined' | 'skipped';
 export type ScenarioType = 'scenario' | 'background';
 
 export interface Scenario {

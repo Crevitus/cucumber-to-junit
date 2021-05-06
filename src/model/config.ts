@@ -1,3 +1,3 @@
 export interface Config {
-  markPendingAsFailed?: boolean;
+  markUndefinedAsFailed?: boolean;
 }

@@ -14,7 +14,7 @@ Usage
 import { CucumberConverter } from 'cucumber-to-junit';
 
 const converter = new CucumberConverter({
-  markPendingAsFailed: true // pending scenario steps will fail the test case
+  markUndefinedAsFailed: true // undefined scenario steps will fail the test case
 });
 
 converter.convertToJunit( 'path/to/cucumber.json', 'path/to/output.xml');

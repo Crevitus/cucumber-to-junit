@@ -43,7 +43,7 @@ export class CucumberConverter {
 
     if (scenarioResult.status === 'failed') {
         testCase.failure(scenarioResult.failureMessage);
-    } else if (scenarioResult.status === 'skipped' || scenarioResult.status === 'pending') {
+    } else if (scenarioResult.status === 'skipped' || scenarioResult.status === 'undefined') {
       testCase.skipped();
     }
 
@@ -66,7 +66,7 @@ export class CucumberConverter {
         scenarioStatus = 'failed';
         failureMessage = step.result.error_message!;
       }
-      else if (this.config.markPendingAsFailed && step.result.status === 'pending') {
+      else if (this.config.markPendingAsFailed && step.result.status === 'undefined') {
         scenarioStatus = 'failed';
         failureMessage = ''
       } else {
