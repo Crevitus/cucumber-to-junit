@@ -7,6 +7,8 @@ describe('blah', () => {
       markUndefinedAsFailed: true // undefined scenario steps will fail the test case
     });
 
+    converter.convertToJunit('test/cucumber.final.json', 'pls.xml');
+
     // TODO add tests
   });
 });

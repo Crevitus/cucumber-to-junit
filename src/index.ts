@@ -24,9 +24,7 @@ export class CucumberConverter {
       suiteDuration += this.addTestCases(scenario, suite);
     }
 
-    const durationInSec = suiteDuration / 1000000000; //ns to seconds
-
-    suite.time(durationInSec);
+    suite.time(suiteDuration);
   }
 
   private addTestCases(scenario: Scenario, suite: any): number {
@@ -56,7 +54,7 @@ export class CucumberConverter {
     let scenarioDuration = 0;
 
     for (const step of scenario.steps) {
-      scenarioDuration += step.result.duration;
+      scenarioDuration += (step.result.duration ? step.result.duration / 1000000000 : 0); //ns to seconds;
 
       if(scenarioStatus === 'failed') {
         continue;
@@ -68,7 +66,7 @@ export class CucumberConverter {
       }
       else if (this.config.markUndefinedAsFailed && step.result.status === 'undefined') {
         scenarioStatus = 'failed';
-        failureMessage = ''
+        failureMessage = 'One or more steps are undefined';
       } else {
         scenarioStatus = step.result.status;
       }
