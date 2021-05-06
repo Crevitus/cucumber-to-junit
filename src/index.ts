@@ -66,7 +66,7 @@ export class CucumberConverter {
         scenarioStatus = 'failed';
         failureMessage = step.result.error_message!;
       }
-      else if (this.config.markPendingAsFailed && step.result.status === 'undefined') {
+      else if (this.config.markUndefinedAsFailed && step.result.status === 'undefined') {
         scenarioStatus = 'failed';
         failureMessage = ''
       } else {
